@@ -12,15 +12,15 @@ Sentry.init({
     dsn: 'https://b3a6c3b6f0574efeb7fc0af013d681c2@o530879.ingest.sentry.io/5650839',
     integrations: [
         // Enable HTTP calls tracing
-        new Sentry.Integrations.Http({ tracing: false }),
+        new Sentry.Integrations.Http({ tracing: true }),
         // Enable Express.js middleware tracing
-        new Tracing.Integrations.Express({ app, router: '/capture-message' } ),
+        new Tracing.Integrations.Express({ app } ),
     ],
-    debug: true,
+/*     debug: true,
     beforeSend(event) {
         console.log(event);
         return event;
-      },
+      }, */
     // Sample rate can be set as a decimal between 0 and 1
     // representing the percent of transactions to record
     //
@@ -48,6 +48,18 @@ let checkout = (cart) => {
     // update Inventory if we have enough to fulfill this order
     Inventory = tempInventory;
 };
+
+let teste = () => {
+    setTimeout(() => { res.send('Success'); }, 2500);
+}
+
+let teste2 = () => {
+    setTimeout(() => { res.send('Success'); }, 2500);
+}
+
+let teste3 = () => {
+    setTimeout(() => { res.send('Success'); }, 2500);
+}
 
 // The request handler must be the first middleware on the app
 app.use(Sentry.Handlers.requestHandler());
@@ -96,6 +108,9 @@ app.get('/capture-message', function (req, res) {
     // of time and goes long
     let delay = 2500;
     Sentry.captureMessage('Custom Message');
+    teste();
+    teste2();
+    teste3();
     setTimeout(() => { res.send('Success'); }, delay);    
 });
 
