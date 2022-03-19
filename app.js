@@ -50,15 +50,15 @@ let checkout = (cart) => {
 };
 
 let teste = () => {
-    setTimeout(() => { res.send('Success'); }, 2500);
+    setTimeout(() => {  }, 2500);
 }
 
 let teste2 = () => {
-    setTimeout(() => { res.send('Success'); }, 2500);
+    setTimeout(() => {  }, 2500);
 }
 
 let teste3 = () => {
-    setTimeout(() => { res.send('Success'); }, 2500);
+    setTimeout(() => {  }, 2500);
 }
 
 // The request handler must be the first middleware on the app
@@ -103,7 +103,7 @@ app.post('/checkout', function (req, res) {
     res.send('Success');
 });
 
-app.get('/capture-message', function (req, res) {
+app.get('/tracing', function (req, res) {
     // Simulate an API call that takes a random amount
     // of time and goes long
     let delay = 2500;
@@ -119,7 +119,7 @@ app.get('/unhandled', function (req, res) {
     obj.doesNotExist();
 });
 
-app.get('/handled', function (req, res) {
+app.get('/erro', function (req, res) {
     try {
         let obj = {};
         obj.doesNotExist();
