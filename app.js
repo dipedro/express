@@ -8,14 +8,19 @@ const Sentry = require('@sentry/node');
 const Tracing = require('@sentry/tracing');
 
 Sentry.init({ 
-    dsn: 'https://276b9c69b15b41a3ae98d07206889b24@sentry.io/1366275',
+    environment: 'development-local',
+    dsn: 'https://b3a6c3b6f0574efeb7fc0af013d681c2@o530879.ingest.sentry.io/5650839',
     integrations: [
         // Enable HTTP calls tracing
-        new Sentry.Integrations.Http({ tracing: true }),
+        new Sentry.Integrations.Http({ tracing: false }),
         // Enable Express.js middleware tracing
-        new Tracing.Integrations.Express({ app }),
+        new Tracing.Integrations.Express({ app, router: '/capture-message' } ),
     ],
-
+    debug: true,
+    beforeSend(event) {
+        console.log(event);
+        return event;
+      },
     // Sample rate can be set as a decimal between 0 and 1
     // representing the percent of transactions to record
     //
